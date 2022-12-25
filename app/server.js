@@ -19,7 +19,7 @@ app.get('/ping', (req, res) => {
 app.get('/api/users', async (req, res) => {
   let response;
   if (process.env.NODE_ENV === 'production') {
-    response = await fetch('http://user-service-clusterip-service/v1/users');
+    response = await fetch('http://userservice-clusterip-service/v1/users');
   } else {
     response = await fetch("http://localhost:4000/v1/users");
   }
@@ -32,7 +32,7 @@ app.get('/api/users', async (req, res) => {
 });
 
 app.get('/', (req, res) => {
-  return res.send('This page is rendered from the App');
+  return res.send('This page is rendered from the Nick App');
 })
 
 app.listen(PORT, () => {

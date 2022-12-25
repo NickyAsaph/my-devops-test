@@ -4,16 +4,33 @@ appserver:
 
   image:
     name: appserver
-    tag: latest
+    tag: v2 
     port: 3000
+
+  env:
+    NODE_ENV: production
   
   service:
-    name: app-server-clusterip-service
+    name: appserver-clusterip-service
     type: ClusterIP
 
 
+nginx:
+  name: nginx
+  replicas: 1
+
+  image:
+    name: nickyasaph/app-nginx
+    tag: v3
+    port: 80
+
+  service:
+    name: app-nginx-loadbalancer-service
+    type: LoadBalancer
+
+
 userservice:
-  name: user-service
+  name: userservice
   replicas: 2
 
   image:
@@ -22,19 +39,6 @@ userservice:
     port: 4000
   
   service:
-    name: user-service-clusterip-service
+    name: userservice-clusterip-service
     type: ClusterIP
-
-nginx:
-  name: app-nginx
-  replicas: 1
-
-  image:
-    name: app-nginx
-    tag: latest
-    port: 80
-
-  service:
-    name: app-nginx-loadbalancer-service
-    type: LoadBalancer
 

@@ -18,6 +18,4 @@ spec:
           imagePullPolicy: Never
           ports:
             - containerPort: {{ .Values.userservice.image.port }}
-          env:
-            - name: NODE_ENV
-              value: production
+            

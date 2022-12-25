@@ -20,4 +20,4 @@ spec:
             - containerPort: {{ .Values.appserver.image.port }}
           env:
             - name: NODE_ENV
-              value: production
+              value: {{ .Values.appserver.env.NODE_ENV }}

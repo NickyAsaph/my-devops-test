@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{.Values.nginx.name}}-deployment
+  name: {{ .Values.nginx.name }}-deployment
 spec:
-  replicas: 1
+  replicas: {{ .Values.nginx.replicas }}
   selector:
     matchLabels:
       server: {{ .Values.nginx.name }}
@@ -15,6 +15,6 @@ spec:
       containers:
         - name: {{ .Values.nginx.name }}
           image: {{ .Values.nginx.image.name }}:{{ .Values.nginx.image.tag }}
-          imagePullPolicy: Never
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: {{ .Values.nginx.image.port }}

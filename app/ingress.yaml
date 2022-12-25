@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/use-regex: 'true'
+  name: app-nginx-loadbalancer-service-loadbalancer-service
+spec:
+  rules:
+  - host: appserver-clusterip-service
+    http:
+      paths: 
+      - backend:
+          service:
+            name: app-nginx-loadbalancer-service-loadbalancer-service
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
