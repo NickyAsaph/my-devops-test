@@ -32,7 +32,7 @@ app.get('/api/users', async (req, res) => {
 });
 
 app.get('/', (req, res) => {
-  return res.send('This page is rendered from the Nick App');
+  return res.send('This page is rendered from the App');
 })
 
 app.listen(PORT, () => {
